@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  EC2_PUBLIC_IP: ec2-18-118-29-27.us-east-2.compute.amazonaws.com # TODO replace to your EC2 instance public IP
+  EC2_PUBLIC_IP: ec2-18-118-29-27.us-east-2.compute.amazonaws.com  # TODO replace to your EC2 instance public IP
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # TODO define this secret in your GitHub repo settings
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           chmod 400 mykey.pem
           
           # Copy the files from the current work dir into the EC2 instance, under `~/app`.
-          scp -o StrictHostKeyChecking=no -i mykey.pem -r * ubuntu@$EC2_PUBLIC_IP:~/NetflixMovieCatalog
+          scp -o StrictHostKeyChecking=no -i mykey.pem -r * ubuntu@$EC2_PUBLIC_IP:~/NetflixMovieCatalog/
           
           # Connect to your EC2 instance and execute the `deploy.sh` script (this script is part of the repo files). 
           # TODO You need to implement the `deploy.sh` script yourself.
@@ -32,4 +32,3 @@ jobs:
           # To keep the app running in the background independently on the terminal session you are logging to, configure it as a Linux service.
     
           ssh -i mykey.pem ubuntu@$EC2_PUBLIC_IP "bash ~/NetflixMovieCatalog/deploy.sh"
-          
