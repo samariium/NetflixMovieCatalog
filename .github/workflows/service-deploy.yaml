@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  EC2_PUBLIC_IP: 3.142.221.106  # TODO replace to your EC2 instance public IP
+  EC2_PUBLIC_IP: ec2-3-142-221-106.us-east-2.compute.amazonaws.com  # TODO replace to your EC2 instance public IP
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # TODO define this secret in your GitHub repo settings
 
 jobs:
